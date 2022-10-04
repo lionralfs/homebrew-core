@@ -11,6 +11,8 @@ class Systemd < Formula
     sha256 x86_64_linux: "96f4b17b8519f82398df5faf793f2e08cc794b4227f91d2ba8eb59c50b07945e"
   end
 
+  keg_only "not linked to prevent conflicts with system binaries"
+
   depends_on "coreutils" => :build
   depends_on "docbook-xsl" => :build
   depends_on "gettext" => :build
@@ -36,8 +38,6 @@ class Systemd < Formula
   depends_on "zstd"
 
   uses_from_macos "libxcrypt"
-
-  keg_only "not linked to prevent conflicts with system binaries"
 
   def install
     ENV["PYTHONPATH"] = Formula["jinja2-cli"].opt_libexec/Language::Python.site_packages("python3.10")
