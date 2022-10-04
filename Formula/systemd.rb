@@ -37,6 +37,8 @@ class Systemd < Formula
 
   uses_from_macos "libxcrypt"
 
+  keg_only "not linked to prevent conflicts with system binaries"
+
   def install
     ENV["PYTHONPATH"] = Formula["jinja2-cli"].opt_libexec/Language::Python.site_packages("python3.10")
     ENV.append "LDFLAGS", "-Wl,-rpath,#{lib}/systemd"
